@@ -6,30 +6,29 @@ export default function Counter(props: { initialValue: number }) {
   const [count, dispatch] = useReducer(reducer, { value: props.initialValue });
 
   function reducer(state: { value: number }, action: string): typeof state {
+    console.log(state, action);
+
     switch (action) {
       case 'add':
         if (state.value === 99) celebrate();
-        return state.value < 100 ? { value: state.value++ } : state
+        return state.value < 100 ? { value: ++state.value } : state
       case 'sub':
-        return state.value > 0 ? { value: state.value-- } : state
+        return state.value > 0 ? { value: --state.value } : state
       default:
         return state
     }
   }
 
   useEffect(() => {
-    document.addEventListener("keydown", handleKey);
+    document.addEventListener("keydown", ({ code }) => {
+      switch (code) {
+        case "ArrowRight":
+          return dispatch('add');
+        case "ArrowLeft":
+          return dispatch('sub');
+      }
+    });
   }, [])
-
-
-  function handleKey({ code }: KeyboardEvent) {
-    switch (code) {
-      case "ArrowRight":
-        return dispatch('add');
-      case "ArrowLeft":
-        return dispatch('sub');
-    }
-  }
 
   return <>
     <div className="wrapper">

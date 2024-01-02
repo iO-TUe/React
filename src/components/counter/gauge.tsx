@@ -6,7 +6,7 @@ export default function Gauge(props: { value: number, recurse: boolean }) {
 
   useEffect(() => {
     setTimeout(() => setBool(props.recurse), 10);
-  }, [])
+  }, [props.recurse])
 
   return <>
     <div role='insertion' className="wrapper" onClick={() => setBool(true)}>
