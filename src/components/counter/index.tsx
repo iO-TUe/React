@@ -1,30 +1,21 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useReducer } from 'react';
 import Gauge from "./gauge.tsx";
 import './index.css';
 
 export default function Counter(props: { initialValue: number }) {
-  const [count, setCount] = useState(props.initialValue);
-  let check = useRef(count);
+  const [count, dispatch] = useReducer(reducer, { value: props.initialValue });
 
-  useEffect(() => {
-    check.current = count
-  }, [count])
-
-
-  function add() {
-    if (check.current < 99) {
-      setCount(c => c + 1);
-    } else if (check.current === 99) {
-      setCount(c => c + 1);
-      celebrate();
+  function reducer(state: { value: number }, action: string): typeof state {
+    switch (action) {
+      case 'add':
+        if (state.value === 99) celebrate();
+        return state.value < 100 ? { value: state.value++ } : state
+      case 'sub':
+        return state.value > 0 ? { value: state.value-- } : state
+      default:
+        return state
     }
   }
-
-  function subtract() {
-    if (check.current > 0) {
-      setCount(c => c - 1);
-    }
-  };
 
   useEffect(() => {
     document.addEventListener("keydown", handleKey);
@@ -34,19 +25,19 @@ export default function Counter(props: { initialValue: number }) {
   function handleKey({ code }: KeyboardEvent) {
     switch (code) {
       case "ArrowRight":
-        return add();
+        return dispatch('add');
       case "ArrowLeft":
-        return subtract();
+        return dispatch('sub');
     }
   }
 
   return <>
     <div className="wrapper">
-      <button className="button" disabled={count === 0} onClick={subtract}>
+      <button className="button" disabled={count.value === 0} onClick={() => dispatch('sub')} aria-label='sub'>
         -
       </button>
-      <Gauge value={count} recurse={false} />
-      <button className="button" disabled={count === 100} onClick={add}>
+      <Gauge value={count.value} recurse={false} />
+      <button className="button" disabled={count.value === 100} onClick={() => dispatch('add')} aria-label='add'>
         +
       </button>
     </div >
