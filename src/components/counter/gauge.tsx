@@ -17,25 +17,8 @@ export default function Gauge(props: { value: number, recurse: boolean }) {
             <stop offset="1000%" stopColor="#AC7FF4" />
           </linearGradient>
         </defs>
-        <circle r="56" cx="60" cy="60" strokeWidth="8" style={{
-          fill: '#000',
-          stroke: '#0000'
-        }}
-        />
-        <circle
-          r="56"
-          cx="60"
-          cy="60"
-          strokeWidth="8"
-          style={{
-            transform: 'rotate(-87.9537deg)',
-            strokeDasharray: `${props.value * 3.51} 351.858`,
-            fill: 'none',
-            transformOrigin: '50% 50%',
-            strokeLinecap: 'round',
-            stroke: 'url(#gradient)'
-          }}
-        />
+        <circle r="56" cx="60" cy="60" strokeWidth="8" style={{ fill: '#000', stroke: '#0000' }} />
+        <circle r="56" cx="60" cy="60" strokeWidth="8" className='stroke' style={{ strokeDasharray: `${props.value * 3.51} 351.858` }} />
       </svg>
       <span className="value">{props.value}</span>
     </div>
