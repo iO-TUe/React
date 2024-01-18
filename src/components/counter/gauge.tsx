@@ -39,6 +39,6 @@ export default function Gauge(props: { value: number, recurse: boolean }) {
       </svg>
       <span className="value">{props.value}</span>
     </div>
-    {(bool && props.value < 121) && <div className="recurse"><Gauge value={props.value + 1} recurse={true} /><Gauge value={props.value + 5} recurse={true} /></div>}
+    {(bool && props.value < 123) && <div className="recurse"><Gauge value={props.value + 1} recurse={true} /><Gauge value={props.value + 5} recurse={true} /></div>}
   </>
 };
