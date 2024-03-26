@@ -15,7 +15,7 @@ jobs:
       - uses:  actions/cache/save@v3
         with: 
           key: ${{ github.run_id }}
-          path: build
+          path: dist
   deploy:
     runs-on: ubuntu-latest
     needs: build
@@ -24,7 +24,7 @@ jobs:
       - uses: actions/cache/restore@v3
         with: 
           key: ${{ github.run_id }}
-          path: build
+          path: dist
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
