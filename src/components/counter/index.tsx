@@ -6,8 +6,6 @@ export default function Counter(props: { initialValue: number }) {
   const [count, dispatch] = useReducer(reducer, { value: props.initialValue });
 
   function reducer(state: { value: number }, action: string): typeof state {
-    console.log(state, action);
-
     switch (action) {
       case 'add':
         if (state.value === 99) celebrate();

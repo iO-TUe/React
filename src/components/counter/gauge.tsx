@@ -9,7 +9,7 @@ export default function Gauge(props: { value: number, recurse: boolean }) {
   }, [props.recurse])
 
   return <>
-    <div role='insertion' className="wrapper" onClick={() => setBool(true)}>
+    <div role='feed' className="wrapper" onClick={() => setBool(true)}>
       <svg viewBox="0 0 120 120" className="gauge">
         <defs>
           <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
