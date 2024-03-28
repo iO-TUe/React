@@ -1,42 +1,26 @@
-import { useEffect, useReducer } from 'react';
-import Gauge from "./gauge.tsx";
-import './index.css';
+import { useState } from 'react'
+import Button from './button.tsx'
+import Gauge from "./gauge.tsx"
+import './index.css'
 
 export default function Counter(props: { initialValue: number }) {
-  const [count, dispatch] = useReducer(reducer, { value: props.initialValue });
-
-  function reducer(state: { value: number }, action: string): typeof state {
-    switch (action) {
-      case 'add':
-        if (state.value === 99) celebrate();
-        return state.value < 100 ? { value: ++state.value } : state
-      case 'sub':
-        return state.value > 0 ? { value: --state.value } : state
-      default:
-        return state
-    }
+  const [count, setCount] = useState(props.initialValue)
+  function add() {
+    if (count === 99) celebrate()
+    if (count < 100) setCount(count + 1)
+  }
+  function subtract() {
+    if (count > 0) setCount(count - 1)
   }
 
-  useEffect(() => {
-    document.addEventListener("keydown", ({ code }) => {
-      switch (code) {
-        case "ArrowRight":
-          return dispatch('add');
-        case "ArrowLeft":
-          return dispatch('sub');
-      }
-    });
-  }, [])
+  console.log("Script: Counter")
 
   return <>
+    {console.log("Render: Counter")}
     <div className="wrapper">
-      <button className="button" disabled={count.value === 0} onClick={() => dispatch('sub')} aria-label='sub'>
-        -
-      </button>
-      <Gauge value={count.value} recurse={false} />
-      <button className="button" disabled={count.value === 100} onClick={() => dispatch('add')} aria-label='add'>
-        +
-      </button>
+      <Button disabled={count === 0} fn={subtract} sign="-" />
+      <Gauge value={count} recurse={false} />
+      <Button disabled={count === 100} fn={add} sign="+" />
     </div >
   </>
 };
@@ -53,42 +37,42 @@ export const celebrate = async () => {
       x: 0.5,
       y: 0.35,
     },
-  };
+  }
 
   function loadConfetti() {
     return new Promise<(opts: any) => void>((resolve, reject) => {
       if ((globalThis as any).confetti) {
-        return resolve((globalThis as any).confetti as any);
+        return resolve((globalThis as any).confetti as any)
       }
-      const script = document.createElement('script');
+      const script = document.createElement('script')
       script.src =
-        'https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js';
-      script.onload = () => resolve((globalThis as any).confetti as any);
-      script.onerror = reject;
-      document.head.appendChild(script);
-      script.remove();
-    });
+        'https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js'
+      script.onload = () => resolve((globalThis as any).confetti as any)
+      script.onerror = reject
+      document.head.appendChild(script)
+      script.remove()
+    })
   }
 
-  const confetti = await loadConfetti();
+  const confetti = await loadConfetti()
 
   function shoot() {
     confetti({
       ...defaults,
       particleCount: 80,
       scalar: 1.2,
-    });
+    })
 
     confetti({
       ...defaults,
       particleCount: 60,
       scalar: 0.75,
-    });
+    })
   }
 
-  setTimeout(shoot, 0);
-  setTimeout(shoot, 100);
-  setTimeout(shoot, 200);
-  setTimeout(shoot, 300);
-  setTimeout(shoot, 400);
-};
+  setTimeout(shoot, 0)
+  setTimeout(shoot, 100)
+  setTimeout(shoot, 200)
+  setTimeout(shoot, 300)
+  setTimeout(shoot, 400)
+}

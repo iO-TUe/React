@@ -1,7 +1,9 @@
-import './header.css';
+import './header.css'
 
 export default function Header() {
-    return (
+    console.log("Script: Header")
+    return <>
+        {console.log("Render: Header")}
         <nav className='App-navbar'>
             <svg className="App-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 841.9 595.3">
                 <g fill="#61DAFB">
@@ -11,8 +13,6 @@ export default function Header() {
                 </g>
             </svg>
         </nav>
-    );
-
-
+    </>
 
 }
