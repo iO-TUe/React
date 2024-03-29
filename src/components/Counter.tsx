@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Button from './button.tsx'
+import './counter.css'
 import Gauge from "./gauge.tsx"
-import './index.css'
 
 export default function Counter(props: { initialValue: number }) {
   const [count, setCount] = useState(props.initialValue)

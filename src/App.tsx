@@ -1,5 +1,5 @@
 import './App.css'
-import Counter from './components/counter'
+import Counter from './components/Counter'
 import Header from './components/header'
 
 export default function App() {
