@@ -7,7 +7,7 @@ export default function Gauge(props: { value: number, recurse: boolean }) {
   console.log("Script: Gauge")
 
   useEffect(() => {
-    setTimeout(() => setBool(props.recurse), 10)
+    setTimeout(() => setBool(props.recurse), 0)
   }, [props.recurse])
 
   return <>
