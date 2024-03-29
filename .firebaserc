@@ -1,5 +1,15 @@
 {
   "projects": {
-    "default": "io-2imc05"
-  }
+    "default": "io-tue"
+  },
+  "targets": {
+    "io-tue": {
+      "hosting": {
+        "React": [
+          "io-react"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }
