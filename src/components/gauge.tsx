@@ -4,14 +4,14 @@ import './gauge.css'
 export default function Gauge(props: { value: number, recurse: boolean }) {
   const [bool, setBool] = useState(false)
 
-  console.log("Script: Gauge")
+  // console.log("Script: Gauge")
 
   useEffect(() => {
     setTimeout(() => setBool(props.recurse), 0)
   }, [props.recurse])
 
   return <>
-    {console.log("Render: Gauge")}
+    {/* {console.log("Render: Gauge")} */}
     <div role='feed' className="wrapper" onClick={() => setBool(true)}>
       <svg viewBox="0 0 120 120" className="gauge">
         <defs>
@@ -25,6 +25,6 @@ export default function Gauge(props: { value: number, recurse: boolean }) {
       </svg>
       <span className="value">{props.value}</span>
     </div>
-    {(bool && props.value < 100) && <div className="recurse"><Gauge value={props.value} recurse={true} /><Gauge value={props.value} recurse={true} /></div>}
+    {(bool && props.value < 100) && <div className="recurse"><Gauge value={props.value + 1} recurse={true} /><Gauge value={props.value + 5} recurse={true} /></div>}
   </>
 };
