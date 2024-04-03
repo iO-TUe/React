@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import './gauge.css'
 
-export default function Gauge(props: { value: number, recurse: boolean }) {
+export default function Gauge(props: { value: number, max: number, recurse: boolean }) {
   const [bool, setBool] = useState(false)
 
   // console.log("Script: Gauge")
@@ -25,6 +25,9 @@ export default function Gauge(props: { value: number, recurse: boolean }) {
       </svg>
       <span className="value">{props.value}</span>
     </div>
-    {(bool && props.value < 100) && <div className="recurse"><Gauge value={props.value + 1} recurse={true} /><Gauge value={props.value + 5} recurse={true} /></div>}
+    {(bool && props.max > 0) && <div className="recurse">
+      <Gauge value={props.value * 2} max={props.max - 1} recurse={true} />
+      <Gauge value={Math.round(props.value) / 2} max={props.max - 1} recurse={true} />
+    </div>}
   </>
 };
