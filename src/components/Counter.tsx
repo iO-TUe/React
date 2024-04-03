@@ -18,7 +18,10 @@ export default function Counter(props: { initialValue: number, maxValue: number,
     {/* {console.log("Render: Counter")} */}
     <div className="wrapper">
       <Button disabled={count === 0} fn={subtract} sign="-" />
-      <Gauge value={count} max={props.maxValue} recurse={props.recurse} />
+      <div className="counters">
+        {[...Array(props.recurse ? 1 : props.maxValue)].map((_, idx) =>
+          <Gauge key={idx} value={count} max={props.maxValue} recurse={false} />)}
+      </div>
       <Button disabled={count === 100} fn={add} sign="+" />
     </div >
   </>

@@ -7,11 +7,11 @@ import './index.css'
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Counter initialValue={80} maxValue={100} recurse={false} />
+    element: <Counter initialValue={80} maxValue={13} recurse={true} />
   },
   {
     path: '/load',
-    element: <Counter initialValue={50} maxValue={15} recurse={true} />
+    element: <Counter initialValue={50} maxValue={1000} recurse={false} />
   },
 
 ])
