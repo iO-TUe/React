@@ -26,8 +26,8 @@ export default function Gauge(props: { value: number, max: number, recurse: bool
       <span className="value">{props.value}</span>
     </div>
     {(bool && props.max > 0) && <div className="recurse">
-      <Gauge value={props.value * 2} max={props.max - 1} recurse={true} />
-      <Gauge value={Math.round(props.value) / 2} max={props.max - 1} recurse={true} />
+      <Gauge value={props.value + 1} max={props.max - 1} recurse={true} />
+      <Gauge value={props.value - 1} max={props.max - 1} recurse={true} />
     </div>}
   </>
 };
