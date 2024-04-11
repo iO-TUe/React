@@ -3,22 +3,20 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Counter from './components/counter'
 import Header from './components/header'
 import './index.css'
+import Todo from './views/todo'
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Counter initialValue={80} maxValue={12} recurse={true} />
-  },
-  {
-    path: '/load',
-    element: <Counter initialValue={50} maxValue={1000} recurse={false} />
-  },
+const router = createBrowserRouter([{
+  path: '/',
+  element: <Counter initialValue={80} maxValue={12} recurse={true} />
+}, {
+  path: '/load',
+  element: <Counter initialValue={50} maxValue={1000} recurse={false} />
+}, {
+  path: '/todo',
+  element: <Todo />
+}])
 
-])
-
-// console.log('Scipt: App')
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(<>
-  {/* {console.log('Render: App')} */}
   <div className="App">
     <Header />
     <main className="App-main">
