@@ -12,8 +12,7 @@ export default function Todo() {
 
     function addItem({ key }: KeyboardEvent<HTMLInputElement>) {
         if (key === "Enter" && input) {
-            items.push({ id: id.current, text: input })
-            id.current++
+            items.push({ id: id.current++, text: input })
             setInput('')
         }
     }
