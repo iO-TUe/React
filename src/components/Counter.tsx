@@ -1,7 +1,8 @@
+"use client"
 import { useState } from 'react'
-import Button from './button.tsx'
+import Button from './button'
 import './counter.css'
-import Gauge from "./gauge.tsx"
+import Gauge from "./gauge"
 
 export default function Counter(props: { initialValue: number, maxValue: number, recurse: boolean }) {
   const [count, setCount] = useState(props.initialValue)

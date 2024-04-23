@@ -4,7 +4,6 @@ import Item from "../components/item"
 import './todo.css'
 
 export default function Todo() {
-
     const id = useRef(0)
     const [items, setItems] = useState<{ id: number, text: string }[]>([])
     const [input, setInput] = useState('')
@@ -25,7 +24,9 @@ export default function Todo() {
         i.current!.disabled = false
     }, [])
 
+    // console.log("Script: Todo")
     return <>
+        {/* {console.log("Render: Todo")} */}
         <section id="todo">
             <label >
                 <h2>Add new item</h2>
