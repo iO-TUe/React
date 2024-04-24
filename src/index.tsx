@@ -7,7 +7,7 @@ import Todo from './views/todo'
 
 const router = createBrowserRouter([{
   path: '/',
-  element: <Counter initialValue={80} maxValue={12} recurse={true} />
+  element: <Counter initialValue={80} maxValue={10} recurse={true} />
 }, {
   path: '/load',
   element: <Counter initialValue={50} maxValue={1000} recurse={false} />

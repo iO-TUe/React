@@ -1,5 +1,5 @@
 import { KeyboardEvent, useEffect, useRef, useState } from "react"
-import Counter from "../components/counter"
+import Counter from "../components/counter.gen"
 import Item from "../components/item"
 import './todo.css'
 
