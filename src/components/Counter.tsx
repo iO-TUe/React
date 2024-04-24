@@ -1,5 +1,5 @@
 "use client"
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Button from './button'
 import './counter.css'
 import Gauge from "./gauge"
@@ -13,6 +13,15 @@ export default function Counter(props: { initialValue: number, maxValue: number,
     if (count > 0) setCount(count - 1)
   }
 
+
+  useEffect(() => {
+    if (typeof window != undefined) {
+      const delay = Date.now() + 50
+      while (Date.now() < delay) {
+        console.log()
+      }
+    }
+  }, [])
   // console.log("Script: Counter")
 
   return <>

@@ -6,13 +6,12 @@ import './todo.css'
 export default function Todo() {
     const id = useRef(0)
     const [items, setItems] = useState<{ id: number, text: string }[]>([])
-    const [input, setInput] = useState('')
-    const i = useRef<HTMLInputElement>(null)
+    const input = useRef<HTMLInputElement>(null)
 
     function addItem({ key }: KeyboardEvent<HTMLInputElement>) {
-        if (key === "Enter" && input) {
-            items.push({ id: id.current++, text: input })
-            setInput('')
+        if (key === "Enter" && input.current!.value) {
+            setItems([...items, { id: id.current++, text: input.current!.value }])
+            input.current!.value = ''
         }
     }
 
@@ -21,7 +20,7 @@ export default function Todo() {
     }
 
     useEffect(() => {
-        i.current!.disabled = false
+        input.current!.disabled = false
     }, [])
 
     // console.log("Script: Todo")
@@ -30,14 +29,14 @@ export default function Todo() {
         <section id="todo">
             <label >
                 <h2>Add new item</h2>
-                <input ref={i} disabled id="input" value={input} onChange={(ev) => setInput(ev.target.value)} onKeyDown={addItem} />
+                <input ref={input} disabled id="input" onKeyDown={addItem} />
             </label>
             <ul className="list">
                 {items.map(item => <Item key={item.id} item={item} remove={removeItem} />)}
             </ul>
         </section>
         <section id="counters">
-            <Counter initialValue={50} maxValue={500} recurse={false} />
+            <Counter initialValue={50} maxValue={5} recurse={false} />
         </section>
     </>
 }
