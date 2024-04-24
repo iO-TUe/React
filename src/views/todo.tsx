@@ -29,7 +29,7 @@ export default function Todo() {
         <section id="todo">
             <label >
                 <h2>Add new item</h2>
-                <input ref={input} disabled id="input" onKeyDown={addItem} />
+                <input ref={input} disabled id="input" onKeyUp={addItem} />
             </label>
             <ul className="list">
                 {items.map(item => <Item key={item.id} item={item} remove={removeItem} />)}

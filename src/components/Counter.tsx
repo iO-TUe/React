@@ -15,7 +15,7 @@ export default function Counter(props: { initialValue: number, maxValue: number,
 
 
   useEffect(() => {
-    if (typeof window != undefined) {
+    if (typeof window != 'undefined') {
       const delay = Date.now() + 50
       while (Date.now() < delay) {
         console.log()
