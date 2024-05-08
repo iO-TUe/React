@@ -18,9 +18,9 @@ export default function Todo() {
         setItems(items.filter(({ id }) => id !== rid))
     }
 
-    // console.count("Script: Todo")
+    console.count("Script: Todo")
     return <>
-        {/* {console.count("Render: Todo")} */}
+        {console.count("Render: Todo")}
         <section id="todo">
             <label >
                 <h2>Add new item</h2>
