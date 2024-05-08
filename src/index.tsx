@@ -16,7 +16,9 @@ const router = createBrowserRouter([{
   element: <Todo />
 }])
 
+// console.count('Script: Index')
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(<>
+  {/* {console.count('Render: Index')} */}
   <div className="App">
     <Header />
     <main className="App-main">

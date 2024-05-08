@@ -22,10 +22,10 @@ export default function Counter(props: { initialValue: number, maxValue: number,
       }
     }
   }, [])
-  // console.log("Script: Counter")
 
+  // console.count("Script: Counter")
   return <>
-    {/* {console.log("Render: Counter")} */}
+    {/* {console.count("Render: Counter")} */}
     <div className="wrapper">
       <Button disabled={count === 0} fn={subtract} sign="-" />
       <div className="counters">

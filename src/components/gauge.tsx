@@ -4,14 +4,14 @@ import './gauge.css'
 export default function Gauge(props: { value: number, max: number, recurse: boolean }) {
   const [bool, setBool] = useState(false)
 
-  // console.log("Script: Gauge")
 
   useEffect(() => {
     setTimeout(() => setBool(props.recurse), 0)
   }, [props.recurse])
 
+  // console.count("Script: Gauge")
   return <>
-    {/* {console.log("Render: Gauge")} */}
+    {/* {console.count("Render: Gauge")} */}
     <div role='feed' className="g-wrapper" onClick={() => setBool(true)}>
       <svg viewBox="0 0 120 120" className="gauge">
         <defs>

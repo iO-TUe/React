@@ -1,9 +1,9 @@
 import './header.css'
 
 export default function Header() {
-    // console.log("Script: Header")
+    // console.count("Script: Header")
     return <>
-        {/* {console.log("Render: Header")} */}
+        {/* {console.count("Render: Header")} */}
         <nav className='App-navbar'>
             <svg className="App-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 841.9 595.3">
                 <g fill="#61DAFB">
